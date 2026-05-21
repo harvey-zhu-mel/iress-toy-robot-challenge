@@ -13,7 +13,7 @@ public class DomainModelTests
     {
         var table = TableTop.Standard;
 
-        var result = table.Contains(new Position(x, y));
+        var result = table.IsValidPosition(new Position(x, y));
 
         Assert.True(result);
     }
@@ -28,7 +28,7 @@ public class DomainModelTests
     {
         var table = TableTop.Standard;
 
-        var result = table.Contains(new Position(x, y));
+        var result = table.IsValidPosition(new Position(x, y));
 
         Assert.False(result);
     }

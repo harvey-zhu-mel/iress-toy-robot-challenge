@@ -14,7 +14,7 @@ public sealed class ToyRobot
 
     public void Place(Position position, Direction direction)
     {
-        if (!_tableTop.Contains(position))
+        if (!_tableTop.IsValidPosition(position))
         {
             return;
         }
@@ -38,7 +38,7 @@ public sealed class ToyRobot
             _ => throw new ArgumentOutOfRangeException(nameof(currentState.Position),  currentState.Direction, "Unsupported robot direction.")
         };
 
-        if (!_tableTop.Contains(nextPosition))
+        if (!_tableTop.IsValidPosition(nextPosition))
         {
             return;
         }

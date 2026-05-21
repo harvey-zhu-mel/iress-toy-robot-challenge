@@ -25,7 +25,7 @@ public sealed class TableTop
         Height = height;
     }
 
-    public bool Contains(Position position)
+    public bool IsValidPosition(Position position)
     {
         return position.X >= 0 && position.X < Width && position.Y >= 0 && position.Y < Height;
     }
