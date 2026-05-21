@@ -40,6 +40,14 @@ dotnet test
 
 ## Run The Application
 
+Show command-line help:
+
+```bash
+dotnet run --project ./src/Iress.ToyRobot.Console -- --help
+```
+
+Robot commands are not command-line arguments. They are entered one per line through standard input or read from a command file.
+
 Run with an input file:
 
 ```bash
@@ -54,11 +62,6 @@ dotnet run --project ./src/Iress.ToyRobot.Console
 
 Then enter commands, one per line.
 
-- macOS/Linux: press `Ctrl+D` to finish input.
-- Windows: press `Ctrl+Z`, then `Enter` to finish input.
-
-Example input:
-
 ```text
 PLACE 1,2,EAST
 MOVE
@@ -68,11 +71,20 @@ MOVE
 REPORT
 ```
 
+Then finish input:
+
+- macOS/Linux: press `Ctrl+D`.
+- Windows: press `Ctrl+Z`, then `Enter`.
+
 Expected output:
 
 ```text
 3,3,NORTH
 ```
+
+The console application accepts either no arguments or one input-file argument. Passing `--help` or `-h` prints usage information and exits successfully.
+Invalid argument combinations and missing input files return a non-zero exit code with an error message.
+Passing a robot command as an argument, such as `dotnet run --project ./src/Iress.ToyRobot.Console -- "MOVE"`, is treated as invalid usage and prints guidance for using standard input instead.
 
 ## Challenge Rules
 
@@ -154,3 +166,4 @@ The production projects do not use third-party runtime packages. NuGet package d
 - Invalid `PLACE` commands do not clear an existing valid robot state.
 - Unsafe `MOVE` commands are ignored, and later valid commands still run.
 - `MOVE`, `LEFT`, `RIGHT`, and `REPORT` are ignored until the robot has been placed successfully.
+- Console usage, missing-file, file input, and standard input behavior are covered by automated tests.
