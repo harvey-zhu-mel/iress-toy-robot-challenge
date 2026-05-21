@@ -33,7 +33,7 @@ public static class DirectionExtensions
             return false;
         }
 
-        switch (input.Trim())
+        switch (input.Trim().ToUpperInvariant())
         {
             case "NORTH":
                 direction = Direction.North;
