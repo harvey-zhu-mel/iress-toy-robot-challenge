@@ -143,4 +143,47 @@ public class ToyRobotTests
         Assert.Null(robot.Report());
     }
 
+    [Fact]
+    public void Move_NorthFromSouthWestOrigin_IncreasesY()
+    {
+        var robot = new ToyRobot();
+
+        robot.Place(new Position(0, 0), Direction.North);
+        robot.Move();
+
+        Assert.Equal("0,1,NORTH", robot.Report());
+    }
+
+    [Fact]
+    public void Move_EastFromSouthWestOrigin_IncreasesX()
+    {
+        var robot = new ToyRobot();
+
+        robot.Place(new Position(0, 0), Direction.East);
+        robot.Move();
+
+        Assert.Equal("1,0,EAST", robot.Report());
+    }
+
+    [Fact]
+    public void Move_SouthFromSouthWestOrigin_IsIgnored()
+    {
+        var robot = new ToyRobot();
+
+        robot.Place(new Position(0, 0), Direction.South);
+        robot.Move();
+
+        Assert.Equal("0,0,SOUTH", robot.Report());
+    }
+
+    [Fact]
+    public void Move_WestFromSouthWestOrigin_IsIgnored()
+    {
+        var robot = new ToyRobot();
+
+        robot.Place(new Position(0, 0), Direction.West);
+        robot.Move();
+
+        Assert.Equal("0,0,WEST", robot.Report());
+    }
 }
