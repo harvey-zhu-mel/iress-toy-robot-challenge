@@ -23,7 +23,7 @@ public sealed class ToyRobot
 
     public void Move()
     {
-        if(! _state.HasValue)
+        if (!_state.HasValue)
         {
             return;
         }
@@ -35,7 +35,7 @@ public sealed class ToyRobot
             Direction.East => new Position(currentState.Position.X + 1, currentState.Position.Y),
             Direction.South => new Position(currentState.Position.X, currentState.Position.Y - 1),
             Direction.West => new Position(currentState.Position.X - 1, currentState.Position.Y),
-            _ => throw new ArgumentOutOfRangeException(nameof(currentState.Position),  currentState.Direction, "Unsupported robot direction.")
+            _ => throw new ArgumentOutOfRangeException(nameof(currentState.Position), currentState.Direction, "Unsupported robot direction.")
         };
 
         if (!_tableTop.IsValidPosition(nextPosition))
@@ -81,5 +81,5 @@ public sealed class ToyRobot
 
         return _state.Value.ToReportString();
     }
-   
+
 }
